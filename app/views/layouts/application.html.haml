@@ -9,7 +9,7 @@
     = csrf_meta_tags
   %body
     .container
-      %ul.nav.nav-tabs.navbar-right{role: "navigation"}
-        %li= link_to "Sign Up", '#'
-        %li= link_to "Sign In", '#'
-    = yield
+      = render 'layouts/navbar'
+    .container
+      = render 'layouts/messages'
+      = yield
