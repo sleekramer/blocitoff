@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root 'users#show', as: :authenticated
   end
   resources :users, only: [] do
-    resources :items, only: [:create]
+    resources :items, only: [:create, :destroy]
   end
   devise_for :users
   root to: 'welcome#about'

@@ -1,6 +1,13 @@
-- flash.each do |key, value|
-  %div{ class: "alert alert-#{key}"}
-    %a.close{ href: "#", "data-dismiss" => "alert"} &times;
-    %ul
-      %li
-        = value
+.flash
+  - flash.each do |key, value|
+    - if "#{key}" == "alert"
+      - key = "warning"
+    - elsif "#{key}" == "notice"
+      - key = "success"
+    - elsif "#{key}" == "error"
+      - key = "danger"
+    %div{ class: "alert alert-#{key}"}
+      %a.close{ href: "#", "data-dismiss" => "alert"} &times;
+      %ul
+        %li
+          = value
