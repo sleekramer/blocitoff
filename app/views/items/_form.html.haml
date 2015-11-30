@@ -1,0 +1,6 @@
+%h3 New Item
+= form_for [user, item] do |f|
+  .form-group
+    = f.text_field :name, class: 'form-control', placeholder: "Enter item here"
+  .form-group
+    = f.submit "Save", class: 'btn btn-success'
