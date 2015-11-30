@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'haml'
 gem "haml-rails", "~> 0.9"
-
+gem 'html2haml'
+gem 'devise'
 
 gem 'rails', '4.2.4'
 
