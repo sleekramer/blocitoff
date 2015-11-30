@@ -1,0 +1,7 @@
+.media
+  .media-body
+    %p= item.name
+    %small
+      created:
+      = time_ago_in_words(item.created_at)
+      ago

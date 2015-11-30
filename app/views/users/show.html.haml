@@ -2,7 +2,9 @@
   .row
     .col-md-8
       %h1 To-Do
-      %p This is where all the to-do list items will be
+      - @user.items.each do |item|
+        = render partial: 'items/item', locals: {item: item}
+      = render partial: 'items/form', locals: {user: @user, item: @user.items.new}
     .col-md-4
       %h1= current_user.email
       %p Something about user todo items or historical completion of tasks
