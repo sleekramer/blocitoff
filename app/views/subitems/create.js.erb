@@ -1,0 +1,12 @@
+<% if @subitem.valid? %>
+  $('#js-subitems-'+<%= @item.id %>).append("<%= escape_javascript(render(@subitem))%>");
+  $('.flash').prepend("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:notice] %></div>");
+  $('#new-subitem-' +<%= @item.id %>).html("<%= escape_javascript(render partial: 'subitems/form', locals: {item: @item, subitem: @new_subitem})%>");
+<% else %>
+  $('.flash').prepend("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:error] %></div>");
+  $('#new-subitem-' +<%= @item.id %>).html("<%= escape_javascript(render partial: 'subitems/form', locals: {item: @item, subitem: @new_subitem})%>")
+<% end %>
+if($('#name-' +<%= @subitem.item.id %>).find('.glyphicon.glyphicon-remove-sign').length){
+
+  $('#delete-' + <%= @subitem.item.id %>).remove();
+}

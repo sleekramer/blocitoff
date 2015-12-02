@@ -1,0 +1,6 @@
+$('#subitem-' +<%= @subitem.id %>).remove();
+$('#js-subitems-' +<%= @subitem.item.id %>).prepend("<%= escape_javascript(render(@subitem))%>");
+if($('#name-' +<%= @subitem.item.id %>).find('.glyphicon.glyphicon-remove-sign').length){
+
+  $('#delete-' + <%= @subitem.item.id %>).remove();
+}

@@ -4,9 +4,12 @@
       %h1 To-Do
       .new-item
         = render partial: 'items/form', locals: {user: @user, item: @user.items.new}
-      .js-items
-        = render @items
-
     .col-md-4
       %h1= current_user.email
-      %p Something about user todo items or historical completion of tasks
+      %ul
+        %li Add a new todo list item.
+        %li Then add as many subitems as you want.
+        %li Mark all subitems as complete in order to complete an item.
+  .row
+    .js-items
+      .item-group= render @items

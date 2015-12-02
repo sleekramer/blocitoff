@@ -1,11 +1,20 @@
-= content_tag :div, class: 'media', id: "item-#{item.id}" do
-  .media-body
-    %p
-      = link_to "", [current_user, item], method: :delete, class: 'glyphicon glyphicon-ok', remote: true
-      = item.name
-    %small
-      created:
-      = time_ago_in_words(item.created_at)
-      ago --
-      = distance_of_time_in_words(Time.now, item.created_at + 7.days)
-      to complete item
+.col-md-8
+  = content_tag :div, class: 'media', id: "item-#{item.id}" do
+    .media-body
+      .row
+        %h4.col-md-7{id: "name-#{item.id}"}
+          -if can_be_deleted?(item)
+            = link_to "", [current_user, item], method: :delete, class: 'glyphicon glyphicon-remove-sign', id: "delete-#{item.id}", remote: true
+          = item.name
+        .col-md-5
+          = content_tag :div, id: "new-subitem-#{item.id}" do
+            = render partial: 'subitems/form', locals: {item: item, subitem: item.subitems.new}
+      %small
+        created:
+        = time_ago_in_words(item.created_at)
+        ago --
+        = distance_of_time_in_words(Time.now, item.created_at + 7.days)
+        to complete item
+      .list-group
+        = content_tag :div, id: "js-subitems-#{item.id}" do
+          = render item.subitems.where.not(id: nil)
