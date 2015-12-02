@@ -1,6 +1,8 @@
-.media
+= content_tag :div, class: 'media', id: "item-#{item.id}" do
   .media-body
-    %p= item.name
+    %p
+      = link_to "", [current_user, item], method: :delete, class: 'glyphicon glyphicon-ok', remote: true
+      = item.name
     %small
       created:
       = time_ago_in_words(item.created_at)
