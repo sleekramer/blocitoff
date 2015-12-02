@@ -46,3 +46,13 @@ div.actions {
 .flash-container {
   min-height: 5em;
 }
+
+.complete {
+  // background:rgb(245, 102, 93);
+  color: rgb(52, 176, 94)
+  // opacity: 0.6;
+}
+
+.incomplete {
+  color: rgb(176, 63, 43)
+}

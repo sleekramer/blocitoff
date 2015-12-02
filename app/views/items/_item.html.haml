@@ -1,7 +1,10 @@
 = content_tag :div, class: 'media', id: "item-#{item.id}" do
   .media-body
     %p
-      = link_to "", mark_complete_user_item_path(current_user, item), class: 'glyphicon glyphicon-ok', remote: true
+      - if item.completed?
+        %i.glyphicon.glyphicon-ok.complete
+      - else
+        = link_to "", mark_complete_user_item_path(current_user, item), method: :post, class: 'glyphicon glyphicon-ok incomplete', remote: true
       = item.name
     %small
       created:

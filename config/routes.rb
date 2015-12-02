@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     resources :items, only: [:create] do
       member do
-        get :mark_complete
-        get :mark_incomplete
+        post :mark_complete
+        post :mark_incomplete
       end
     end
   end

@@ -32,7 +32,13 @@ class ItemsController < ApplicationController
   end
 
   def mark_complete
-    item.mark_complete!
+    @item = item
+    @item.mark_complete!
+    flash[:notice] = "Item completed"
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
@@ -40,7 +46,7 @@ class ItemsController < ApplicationController
   def item
     current_user.items.find(params[:id])
   end
-  
+
   def item_params
     params.require(:item).permit(:name)
   end
