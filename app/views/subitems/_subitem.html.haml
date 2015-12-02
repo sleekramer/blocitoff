@@ -1,0 +1,6 @@
+= content_tag :div, class: 'list-group-item', id: "subitem-#{subitem.id}" do
+  - if subitem.completed == false
+    = link_to "", item_mark_complete_path(subitem.item, subitem), class: 'glyphicon glyphicon-unchecked', method: :post, remote: true
+  - else
+    = link_to "", item_mark_incomplete_path(subitem.item, subitem), class: 'glyphicon glyphicon-ok', method: :post, remote: true
+  = subitem.name

@@ -1,0 +1,5 @@
+$('#subitem-' +<%= @subitem.id %>).remove();
+$('#js-subitems-' +<%= @subitem.item.id %>).append("<%= escape_javascript(render(@subitem))%>");
+<% if @item_completed %>
+  $('#name-' +<%= @subitem.item.id %>).prepend("<%= escape_javascript(link_to "", [current_user, @subitem.item], method: :delete, class: 'glyphicon glyphicon-remove-sign',id: "delete-#{@subitem.item.id}" ,remote: true) %>");
+<% end %>
