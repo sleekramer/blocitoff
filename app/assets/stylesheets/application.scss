@@ -32,7 +32,6 @@ div.actions {
   margin-top: 10px;
 }
 
-
 @keyframes fadeOut {
   0% {opacity: 0;}
   10% {opacity: 1;}
@@ -42,4 +41,8 @@ div.actions {
 
 .alert {
   animation: fadeOut 2700ms ease-in 0s 1 forwards;
+}
+
+.flash-container {
+  min-height: 5em;
 }

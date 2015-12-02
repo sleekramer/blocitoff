@@ -29,9 +29,18 @@ class ItemsController < ApplicationController
       format.html
       format.js
     end
-
   end
+
+  def mark_complete
+    item.mark_complete!
+  end
+
   private
+
+  def item
+    current_user.items.find(params[:id])
+  end
+  
   def item_params
     params.require(:item).permit(:name)
   end
