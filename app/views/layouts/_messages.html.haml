@@ -1,12 +1,6 @@
 .flash
   - flash.each do |key, value|
-    - if "#{key}" == "alert"
-      - key = "warning"
-    - elsif "#{key}" == "notice"
-      - key = "success"
-    - elsif "#{key}" == "error"
-      - key = "danger"
-    %div{ class: "alert alert-#{key}"}
+    %div{ class: "#{bootstrap_classes(key)}"}
       %a.close{ href: "#", "data-dismiss" => "alert"} &times;
       %ul
         %li
