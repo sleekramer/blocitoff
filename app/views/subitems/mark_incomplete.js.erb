@@ -1,6 +1,11 @@
-$('#subitem-' +<%= @subitem.id %>).remove();
-$('#js-subitems-' +<%= @subitem.item.id %>).prepend("<%= escape_javascript(render(@subitem))%>");
-if($('#name-' +<%= @subitem.item.id %>).find('.glyphicon.glyphicon-remove-sign').length){
+<% if !@subitem.completed %>
+  $('#subitem-' +<%= @subitem.id %>).remove();
+  $('#js-subitems-' +<%= @subitem.item.id %>).prepend("<%= escape_javascript(render(@subitem))%>");
+  $('.flash').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:notice] %>")
+  if($('#name-' +<%= @subitem.item.id %>).find('.glyphicon.glyphicon-remove-sign').length){
 
-  $('#delete-' + <%= @subitem.item.id %>).remove();
-}
+    $('#delete-' + <%= @subitem.item.id %>).remove();
+  }
+<% else %>
+  $('.flash').html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:error] %>")
+<% end %>
