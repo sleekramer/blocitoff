@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
+    devise_for :users, controllers: {sessions: "users/sessions"}
     resources :users, only: [:index, :show] do
       resources :items, only: [:create, :destroy, :update]
     end
