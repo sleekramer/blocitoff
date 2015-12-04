@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
-  
+  skip_before_action :verify_authenticity_token
   # GET /resource/sign_in
   # def new
   #   super
@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    user = warden.authenticate!(auth_options)
+    user = warden.authenticate!(scope: :user)
     token = Tiddle.create_and_return_token(user, request)
     render json: { authentication_token: token }
   end
