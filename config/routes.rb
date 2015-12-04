@@ -2,10 +2,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:index, :show] do
-      resources :items, only: [:create, :destroy]
+      resources :items, only: [:create, :destroy, :update]
     end
     resources :items, only: [] do
-      resources :subitems, only: [:create]
+      resources :subitems, only: [:create, :update]
       post 'subitems/:id/mark_complete' => 'subitems#mark_complete'
       post 'subitems/:id/mark_incomplete' => 'subitems#mark_incomplete'
     end

@@ -11,6 +11,15 @@ class Api::SubitemsController < ApiController
     end
   end
 
+  def update
+    subitem = Subitem.find(params[:id])
+    if subitem.update(subitem_params)
+      render json: subitem
+    else
+      render json: {errors: subitem.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
   def mark_complete
     subitem = Subitem.find(params[:id])
     if subitem.update_attribute(:completed, true)
@@ -31,6 +40,6 @@ class Api::SubitemsController < ApiController
 
   private
   def subitem_params
-    params.require(:subitem).permit(:name)
+    params.require(:subitem).permit(:name, :completed)
   end
 end
