@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     end
     resources :items, only: [] do
       resources :subitems, only: [:create, :update]
-      post 'subitems/:id/mark_complete' => 'subitems#mark_complete'
-      post 'subitems/:id/mark_incomplete' => 'subitems#mark_incomplete'
+      patch 'subitems/:id/mark_complete' => 'subitems#mark_complete'
+      patch 'subitems/:id/mark_incomplete' => 'subitems#mark_incomplete'
     end
   end
 
