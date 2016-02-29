@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby 2.2.4
+ruby "2.2.4"
 gem 'haml'
 gem "haml-rails", "~> 0.9"
 gem 'html2haml'
