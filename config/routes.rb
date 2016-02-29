@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :api, defaults: { format: :json } do
-    devise_for :users, controllers: {sessions: "users/sessions"}
-    resources :users, only: [:index, :show] do
-      resources :items, only: [:create, :destroy, :update]
-    end
-    resources :items, only: [] do
-      resources :subitems, only: [:create, :update]
-      patch 'subitems/:id/mark_complete' => 'subitems#mark_complete'
-      patch 'subitems/:id/mark_incomplete' => 'subitems#mark_incomplete'
-    end
-  end
+
 
   authenticated :user do
     root 'users#show', as: :authenticated
@@ -26,5 +16,17 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root to: 'welcome#about'
+
+  namespace :api, defaults: { format: :json } do
+    devise_for :users, controllers: {sessions: "users/sessions"}
+    resources :users, only: [:index, :show] do
+      resources :items, only: [:create, :destroy, :update]
+    end
+    resources :items, only: [] do
+      resources :subitems, only: [:create, :update]
+      patch 'subitems/:id/mark_complete' => 'subitems#mark_complete'
+      patch 'subitems/:id/mark_incomplete' => 'subitems#mark_incomplete'
+    end
+  end
 
 end
